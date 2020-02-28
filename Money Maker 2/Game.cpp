@@ -1,8 +1,10 @@
 #include "Game.h"
 
 Game::Game()
+	:mEvent(sf::Event())
 {
-	mWindow = new sf::RenderWindow(sf::VideoMode(500, 500), "Clicker!", sf::Style::Titlebar | sf::Style::Close);
+	mWindow = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Clicker!", sf::Style::Titlebar | sf::Style::Close);
+	mWindow->setMouseCursorVisible(false);
 }
 
 Game::~Game()
@@ -28,6 +30,10 @@ void Game::PollEvent()
 		case sf::Event::Closed:
 			mWindow->close();
 			break;
+		case sf::Event::KeyPressed:
+			if (mEvent.key.code == sf::Keyboard::Key::Escape)
+				mWindow->close();
+			break;
 		}
 	}
 }
@@ -35,8 +41,12 @@ void Game::PollEvent()
 void Game::Update()
 {
 	PollEvent();
+	player.Update(mWindow);
 }
 
 void Game::Render()
 {
+	mWindow->clear();
+	player.Render(*mWindow);
+	mWindow->display();
 }

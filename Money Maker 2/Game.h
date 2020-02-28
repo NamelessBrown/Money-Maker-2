@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "Player.h"
 
 class Game
 {
@@ -15,6 +15,8 @@ public:
 private:
 	sf::RenderWindow* mWindow;
 	sf::Event mEvent;
+
+	Player player;
 
 	void PollEvent();
 	void Update();
