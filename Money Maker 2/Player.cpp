@@ -38,6 +38,7 @@ void Player::Reborn()
 		mMoney -= mLife.rebornPrice;
 
 		mLife.rebornPrice += 75 * double((mLife.life - 1)) + 200;
+		mLife.life++;
 	}
 
 }
