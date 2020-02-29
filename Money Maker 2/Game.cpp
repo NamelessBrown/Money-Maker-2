@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game()
-	:mEvent(sf::Event()), button(sf::Vector2f(500, 500), "Test 1")
+	:mEvent(sf::Event()), button(sf::Vector2f(500, 500), "Test 1", sf::Color::Blue, sf::Vector2f(50.f, 50.f))
 {
 	mWindow = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Clicker!", sf::Style::Titlebar | sf::Style::Close);
 	mWindow->setMouseCursorVisible(false);
@@ -43,6 +43,10 @@ void Game::Update()
 	PollEvent();
 	player.Update(mWindow);
 
+	if (button.IsClicked(player.getSprite()))
+	{
+		std::cout << "Hit! \n" << '\n';
+	}
 	
 }
 
