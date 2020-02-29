@@ -7,6 +7,18 @@
 #include <random>
 #include <iostream>
 
+struct Life
+{
+	unsigned int life;
+	double rebornPrice;
+
+	Life(int lLife = 1, double rebornPrice = 100)
+		:life(lLife), rebornPrice(rebornPrice)
+	{
+	}
+};
+
+
 class Player
 {
 public:
@@ -15,7 +27,8 @@ public:
 
 	sf::Sprite getSprite() const;
 
-	void UpgradeMoneyMax();
+	void Reborn();
+	void ChangeFont(std::string filename);
 	void Update(sf::RenderWindow* window);
 	void Render(sf::RenderTarget& target);
 private:
@@ -32,6 +45,7 @@ private:
 	std::mt19937 mRng;
 	std::uniform_real_distribution<double> mRandomDistribution;
 
+	Life mLife;
 
 	bool mMousePressed;
 };

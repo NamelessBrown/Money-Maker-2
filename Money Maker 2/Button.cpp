@@ -16,12 +16,13 @@
 	mButtonRect.setSize(buttonSize);
 } */
 
-Button::Button(const sf::Vector2f& position, const std::string& buttonName, const sf::Color& buttonColor, const sf::Vector2f& buttonSize)
+Button::Button(const sf::Vector2f& position, const std::string& buttonName, const sf::Color& buttonColor, const sf::Vector2f& buttonSize, const std::string fontFileName)
 	:mClicked(false)
 {
-	mFont.loadFromFile("Font/fast_money.ttf");
+	mFont.loadFromFile(fontFileName);
 	mText.setFont(mFont);
 	mText.setString(buttonName);
+	mText.setCharacterSize(20);
 
 	mText.setPosition(position.x + 50, position.y);
 
@@ -54,6 +55,12 @@ bool Button::IsClicked(const sf::Sprite& sprite)
 void Button::MovePosition(const sf::Vector2f& newPosition)
 {
 	mButtonRect.setPosition(newPosition);
+}
+
+void Button::ChangeedFont(const std::string fontFileName)
+{
+	mFont.loadFromFile(fontFileName);
+	mText.setFont(mFont);
 }
 
 //Draws all things that needs to be draw with the buton class

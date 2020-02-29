@@ -17,8 +17,10 @@ private:
 	sf::RenderWindow* mWindow;
 	sf::Event mEvent;
 
+
 	Player player;
 	Button button;
+	Button changeFont;
 
 	void PollEvent();
 	void Update();
