@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "Button.h"
+#include "Music.h"
 
 class Game
 {
@@ -19,11 +20,15 @@ private:
 
 
 	Player player;
+	Music music;
+
 	Button button;
 	Button changeFont;
+	Button musicButton;
 
 	void PollEvent();
 	void Update();
+	void ButtonAction();
 	void Render();
 };
 
