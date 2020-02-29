@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player::Player()
-	:mMoney(0.0), mMousePressed(false)
+	:mMoney(0.0), mMousePressed(false), mMoneyMin(0.1), mMoneyMax(1.10), mRd(), mRng(mRd()), mRandomDistribution(mMoneyMin, mMoneyMax)
 {
 	mTexture = new sf::Texture();
 	mTexture->loadFromFile("Graphics/money.png");
@@ -22,13 +22,22 @@ sf::Sprite Player::getSprite() const
 	return mSprite;
 }
 
+void Player::UpgradeMoneyMax()
+{
+	mMoneyMax += 1.5;
+	std::uniform_real_distribution<double> tempDistribution(mMoneyMin, mMoneyMax);
+
+	mRandomDistribution = tempDistribution;
+
+}
+
 void Player::Update(sf::RenderWindow* window)
 {
 	mSprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(*window)));
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !mMousePressed)
 	{
-		mMoney += .1;
+		mMoney += mRandomDistribution(mRng);
 		mMousePressed = true;
 	}
 
@@ -39,7 +48,8 @@ void Player::Update(sf::RenderWindow* window)
 
 	std::stringstream ss;
 
-	ss << "Money: " << mMoney;
+	ss << "Money: " << mMoney << '\n';
+	ss << "Max Money range is: " << mMoneyMin << '/' << mMoneyMax;
 
 	mText.setString(ss.str());
 
