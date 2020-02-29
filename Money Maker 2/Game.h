@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Player.h"
+#include "Button.h"
 
 class Game
 {
@@ -17,6 +18,7 @@ private:
 	sf::Event mEvent;
 
 	Player player;
+	Button button;
 
 	void PollEvent();
 	void Update();

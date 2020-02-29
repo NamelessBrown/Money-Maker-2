@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game()
-	:mEvent(sf::Event())
+	:mEvent(sf::Event()), button(sf::Vector2f(500, 500), "Test 1")
 {
 	mWindow = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Clicker!", sf::Style::Titlebar | sf::Style::Close);
 	mWindow->setMouseCursorVisible(false);
@@ -42,11 +42,14 @@ void Game::Update()
 {
 	PollEvent();
 	player.Update(mWindow);
+
+	
 }
 
 void Game::Render()
 {
 	mWindow->clear();
 	player.Render(*mWindow);
+	button.Draw(*mWindow);
 	mWindow->display();
 }

@@ -2,12 +2,15 @@
 
 #include <SFML/Graphics.hpp>
 #include <sstream>
+#include <iostream>
 
 class Player
 {
 public:
 	Player();
 	virtual ~Player();
+
+	sf::Sprite getSprite() const;
 
 	void Update(sf::RenderWindow* window);
 	void Render(sf::RenderTarget& target);

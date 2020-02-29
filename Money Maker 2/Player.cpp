@@ -17,6 +17,11 @@ Player::~Player()
 	delete mTexture;
 }
 
+sf::Sprite Player::getSprite() const
+{
+	return mSprite;
+}
+
 void Player::Update(sf::RenderWindow* window)
 {
 	mSprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(*window)));
