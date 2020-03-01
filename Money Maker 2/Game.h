@@ -25,6 +25,7 @@ private:
 	Button button;
 	Button changeFont;
 	Button musicButton;
+	Button quitButton;
 
 	void PollEvent();
 	void Update();
