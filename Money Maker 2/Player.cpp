@@ -37,8 +37,9 @@ void Player::Reborn()
 
 		mMoney -= mLife.rebornPrice;
 
-		mLife.rebornPrice += 75 * double((mLife.life - 1)) + 200;
+		mLife.rebornPrice += 50 * double((mLife.life - 1)) + 100;
 		mLife.life++;
+		mLife.lifeMuilpier += 0.7;
 	}
 
 }
@@ -55,7 +56,7 @@ void Player::Update(sf::RenderWindow* window)
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !mMousePressed)
 	{
-		mMoney += mRandomDistribution(mRng);
+		mMoney += mRandomDistribution(mRng) * (mLife.lifeMuilpier + 1.5);
 		mMousePressed = true;
 	}
 
@@ -69,6 +70,7 @@ void Player::Update(sf::RenderWindow* window)
 	ss << "Money: " << mMoney << '\n';
 	ss << "Max Money range is: " << mMoneyMin << '/' << mMoneyMax << '\n';
 	ss << "Your life is: " << mLife.life << '\n';
+	ss << "Your money multiplier is: " << (mLife.lifeMuilpier + 1.5) << '\n';
 	ss << "Your reborn price is: " << mLife.rebornPrice << '\n';
 
 	mText.setString(ss.str());

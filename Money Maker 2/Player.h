@@ -11,9 +11,10 @@ struct Life
 {
 	unsigned int life;
 	double rebornPrice;
+	double lifeMuilpier;
 
-	Life(int lLife = 1, double rebornPrice = 100)
-		:life(lLife), rebornPrice(rebornPrice)
+	Life(int lLife = 1, double rebornPrice = 100, double lifeMulilpy = 0.2)
+		:life(lLife), rebornPrice(rebornPrice), lifeMuilpier(lifeMulilpy)
 	{
 	}
 };
