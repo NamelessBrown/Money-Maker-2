@@ -1,7 +1,7 @@
 #include "Music.h"
 
 Music::Music()
-	:mRd(), mMt(mRd()), distribution(1, 14), mWhatFile(distribution(mMt))
+	:mRd(), mMt(mRd()), distribution(1, 20), mWhatFile(distribution(mMt))
 {
 	mSongs.emplace_back("Music/BLISSbyKENARAI.ogg");
 	mSongs.emplace_back("Music/HamptontheHamsterTheHamsterdanceSong.ogg");
@@ -17,6 +17,12 @@ Music::Music()
 	mSongs.emplace_back("Music/TheFatRat-MAYDAYfeat.Laura Brehm.ogg");
 	mSongs.emplace_back("Music/TheFatRat-Monody(feat.Laura Brehm).ogg");
 	mSongs.emplace_back("Music/TheFatRat-FlyAwayfeat.Anjulie.ogg");
+	mSongs.emplace_back("Music/TheFatRat&AnnaYvette&LauraBrehm-Chosen.ogg");
+	mSongs.emplace_back("Music/KE$HA-Stephen-WithLyrics.ogg");
+	mSongs.emplace_back("Music/TheFatRat-InfinitePower!.ogg");
+	mSongs.emplace_back("Music/TheFatRat-Xenogenesis.ogg");
+	mSongs.emplace_back("Music/Tobu-Candyland.ogg");
+	mSongs.emplace_back("Music/Tobu-Candylandpt.II.ogg");
 }
 
 void Music::Play()
